@@ -1,0 +1,122 @@
+;; This file is a configuration file for goku to generate my personal 
+;; configuration for Karabiner-Elements.
+;;
+;; With my configuration, I'm trying to keep it as simple as possible and
+;; achieve the following two things:
+;;   - Simplify and make more ergonomic triggering complex key combinations.
+;;   - Promote "correct" hand usage (i.e. use opposing hands for keys and 
+;;     modifiers, etc.)
+;;
+;; Useful references:
+;;  - [Goku tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md)
+;;  - [Goku key definitions](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/src/karabiner_configurator/keys_info.clj)
+
+{:global {:show-in-menu-bar false}
+ :main [{:des "Mirror controls & caps lock to escape"
+         ; Caps Lock -> Left Control when held down.
+         ; Caps Lock -> turned into the Escape when tapped.
+         ; Quote (') -> Right Control when held down.
+         ; Quote (') -> Quote (') when tapped.
+         :rules [[:##caps_lock :left_control nil {:alone :escape}]
+                 [:##quote :right_control nil {:alone :quote}]]}
+
+        {:des "Hyper keys & vim arrow keys mode"
+         ; Left Command + left-hand side keys -> Hyper + [PRESSED_KEY]
+         ; Right Command + right-hand side keys -> Hyper + [PRESSED_KEY]
+         ; NOTE 1: Hyper == Command + Control + Option + Shift modifiers.
+         ; NOTE 2: h/j/k/l are not mapped to Hyper + [PRESSED_KEY] but rather
+         ; to vim arrow keys for convenience.
+         :rules [[:!Ctab :!CTOStab]
+                 [:!Cq :!CTOSq]
+                 [:!Cw :!CTOSw]
+                 [:!Ce :!CTOSe]
+                 [:!Cr :!CTOSr]
+                 [:!Ct :!CTOSt]
+                 [:!Ca :!CTOSa]
+                 [:!Cs :!CTOSs]
+                 [:!Cd :!CTOSd]
+                 [:!Cf :!CTOSf]
+                 [:!Cg :!CTOSg]
+                 [:!Cz :!CTOSz]
+                 [:!Cx :!CTOSx]
+                 [:!Cc :!CTOSc]
+                 [:!Cv :!CTOSv]
+                 [:!Cb :!CTOSb]
+                 [:!Qy :!QWERy]
+                 [:!Qu :!QWERu]
+                 [:!Qi :!QWERi]
+                 [:!Qo :!QWERo]
+                 [:!Qp :!QWERp]
+                 [:!Qopen_bracket :!QWERopen_bracket]
+                 [:!Qclose_bracket :!QWERclose_bracket]
+                 [:!Q##h :left_arrow]
+                 [:!Q##j :down_arrow]
+                 [:!Q##k :up_arrow]
+                 [:!Q##l :right_arrow]
+                 [:!Qsemicolon :!QWERsemicolon]
+                 [:!Qbackslash :!QWERbackslash]
+                 [:!Qn :!QWERn]
+                 [:!Qm :!QWERm]
+                 [:!Qcomma :!QWERcomma]
+                 [:!Qperiod :!QWERperiod]
+                 [:!Qslash :!QWERslash]]}
+
+        {:des "Super keys"
+         ; Left Command + left-hand side keys -> Super + [PRESSED_KEY]
+         ; Right Command + right-hand side keys -> Super + [PRESSED_KEY]
+         ; NOTE: Super == Command + Control + Option + modifiers.
+         :rules [[:!Otab :!CTOtab]
+                 [:!Oq :!CTOq]
+                 [:!Ow :!CTOw]
+                 [:!Oe :!CTOe]
+                 [:!Or :!CTOr]
+                 [:!Ot :!CTOt]
+                 [:!Oa :!CTOa]
+                 [:!Os :!CTOs]
+                 [:!Od :!CTOd]
+                 [:!Of :!CTOf]
+                 [:!Og :!CTOg]
+                 [:!Oz :!CTOz]
+                 [:!Ox :!CTOx]
+                 [:!Oc :!CTOc]
+                 [:!Ov :!CTOv]
+                 [:!Ob :!CTOb]
+                 [:!Ey :!QWEy]
+                 [:!Eu :!QWEu]
+                 [:!Ei :!QWEi]
+                 [:!Eo :!QWEo]
+                 [:!Ep :!QWEp]
+                 [:!Eopen_bracket :!QWEopen_bracket]
+                 [:!Eclose_bracket :!QWEclose_bracket]
+                 [:!Eh :!QWEh]
+                 [:!Ej :!QWEj]
+                 [:!Ek :!QWEk]
+                 [:!El :!QWEl]
+                 [:!Esemicolon :!QWEsemicolon]
+                 [:!Ebackslash :!QWEbackslash]
+                 [:!En :!QWEn]
+                 [:!Em :!QWEm]
+                 [:!Ecomma :!QWEcomma]
+                 [:!Eperiod :!QWEperiod]
+                 [:!Eslash :!QWEslash]]}
+
+        {:des "No-stretch function keys"
+         ; Left Command + left-side number row keys -> F1 - F5.
+         ; Right Command + right-side number row keys -> F6 - F12.
+         :rules [[:!C##1 :f1]
+                 [:!C##2 :f2]
+                 [:!C##3 :f3]
+                 [:!C##4 :f4]
+                 [:!C##5 :f5]
+                 [:!Q##6 :f6]
+                 [:!Q##7 :f7]
+                 [:!Q##8 :f8]
+                 [:!Q##9 :f9]
+                 [:!Q##0 :f10]
+                 [:!Q##hyphen :f11]
+                 [:!Q##equal_sign :f12]]}
+
+        {:des "Simple forward delete"
+         ; Left Shift + Delete -> Forward delete.
+         ; NOTE: Other left modifiers are also allowed.
+         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}]}
