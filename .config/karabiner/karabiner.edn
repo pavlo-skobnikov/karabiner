@@ -48,27 +48,35 @@
          ; i.e. the _Hyper_ key by pressing the Left Control key.
          :rules [[:left_control :!C!O!Sleft_control]]}
 
-        {:des "Convenient Spacebar"
-         ; This modification makes the spacebar more useful by turning it
-         ; into the Left Shift when it's held down and used in combination
-         ; with other keys.
-         ;
-         ; When the spacebar is tapped, it acts as the regular Spacebar.
-         ; Although this modification doesn't follow the "best practices"
-         ; of typing techniques, it's very convenient and comfortable.
-         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
-
         {:des "Left Command Layer - 1-5 Function Keys"
          ; This layer is activated by holding Left Command and using the first
          ; five number row keys. This layer provides better access to function 
          ; keys.
          ;
          ; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
-         :rules [[:!C##1 :f1]
+         ; All other keys => post nothing to promote good typing habits.
+         :rules [[:!C##tab :vk_none]
+                 [:!C##1 :f1]
                  [:!C##2 :f2]
                  [:!C##3 :f3]
                  [:!C##4 :f4]
-                 [:!C##5 :f5]]}
+                 [:!C##5 :f5]
+                 [:!C##q :vk_none]
+                 [:!C##w :vk_none]
+                 [:!C##e :vk_none]
+                 [:!C##r :vk_none]
+                 [:!C##t :vk_none]
+                 [:!C##a :vk_none]
+                 [:!C##s :vk_none]
+                 [:!C##d :vk_none]
+                 [:!C##f :vk_none]
+                 [:!C##g :vk_none]
+                 [:!C##grave_accent_and_tilde :vk_none]
+                 [:!C##z :vk_none]
+                 [:!C##x :vk_none]
+                 [:!C##c :vk_none]
+                 [:!C##v :vk_none]
+                 [:!C##b :vk_none]]}
 
         {:des "Right Command Layer - 6-12 Function Keys & Arrow Keys",
          ; This layer is activated by holding Right Command and using the first
@@ -77,6 +85,7 @@
          ;
          ; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
          ; Text navigation => H/J/K/L to Left/Down/Up/Right.
+         ; All other keys => post nothing to promote good typing habits.
          :rules [[:!Q##6 :f6]
                  [:!Q##7 :f7]
                  [:!Q##8 :f8]
@@ -84,11 +93,25 @@
                  [:!Q##0 :f10]
                  [:!Q##hyphen :f11]
                  [:!Q##equal_sign :f12]
+                 [:!Q##y :vk_none]
+                 [:!Q##u :vk_none]
+                 [:!Q##i :vk_none]
+                 [:!Q##o :vk_none]
+                 [:!Q##p :vk_none]
+                 [:!Q##open_bracket :vk_none]
+                 [:!Q##close_bracket :vk_none]
                  [:!Q##h :left_arrow]
                  [:!Q##j :down_arrow]
                  [:!Q##k :up_arrow]
                  [:!Q##l :right_arrow]
-                 [:!Q##n :fn]]}
+                 [:!Q##semicolon :vk_none]
+                 [:!Q##quote :vk_none]
+                 [:!Q##n :fn]
+                 [:!Q##m :vk_none]
+                 [:!Q##comma :vk_none]
+                 [:!Q##period :vk_none]
+                 [:!Q##slash :vk_none]
+                ]}
 
         {:des "Easy Forward Delete"
          ; This modification makes it easy to do forward deletion by
