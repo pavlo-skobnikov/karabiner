@@ -1,120 +1,89 @@
-;; This file is a configuration file for goku to generate the configuration file
-;; for Karabiner-Elements.
+;; This file is a configuration file for goku to generate my personal 
+;; configuration for Karabiner-Elements.
 ;;
-;; The EDN format allows for a _very_ concise, flexible, and powerful configuration 
-;; of Karabiner.
-;;
-;; There are several main guidances that this configuration follows:
-;;  - Keep both hands engaged in typing i.e. opposing hands should be engaged equally.
-;;  - Ensure that the wrists are in a neutral position as much as possible.
-;;  - Make the custom rules and mappings as agnostic as possible to the resulting actions.
-;;  - Engage the thumbs more in typing rather than doing difficult stretches.
-;;
-;; Below is a brief reference for the to/from mappings:
-;;  !  | means mandatory
-;;  #  | means optional
-;;  C  | left_command
-;;  T  | left_control
-;;  O  | left_option
-;;  S  | left_shift
-;;  F  | fn
-;;  Q  | right_command
-;;  W  | right_control
-;;  E  | right_option
-;;  R  | right_shift
-;;  P  | caps_lock
-;;  !! | mandatory command + control + optional + shift (hyper)
-;;  ## | optional any
-{; Templates use basic string formatting to substitute the given arguments
- ; i.e. %s is substituted with the application name.
- :templates {; This template is used to launch or focus an application.
-             :launch "osascript -e 'tell application \"%s\" to activate'"}
+;; Useful references:
+;;  - [Goku tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md)
+;;  - [Goku key definitions](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/src/karabiner_configurator/keys_info.clj)
 
- :main [{:des "Mirror Control & Easy Escape"
-         ; This modification does several things:
-         ;  - Caps Lock is turned into the Left Control when held down.
-         ;  - Caps Lock is turned into the Escape when tapped.
-         ;  - Quote (') is turned into the Right Control when held down.
-         ;
-         ; These rules first and foremost make both the Control and Escape
-         ; more accessible and comfortable to use. Secondly, the modification
-         ; fixes the issue of the Control key on MacOs being asymmetrical i.e.
-         ; only available on the left side of the keyboard.
+{:templates {; This template runs the Apple Shortcuts command with the provided name via shell.
+             ; Reference: https://support.apple.com/guide/shortcuts-mac/run-shortcuts-from-the-command-line-apd455c82f02/mac
+             :run-shortcut "shortcuts run \"%s\""
+             ; This template launches or focuses application by invoking Apple Shortucts commands.
+             :launch "shortcuts run \"Launch %s\""}
+
+ :simlayers {:application-launch-mode {:key :a}
+             :vim-navigation-mode {:key :v}
+             :task-manager-mode {:key :t}
+             :notes-application-mode {:key :n}}
+
+ :main [{:des "Mirror control & easy escape"
+         ; Caps Lock -> Left Control when held down.
+         ; Caps Lock -> turned into the Escape when tapped.
+         ; Quote (') -> Right Control when held down.
+         ; Quote (') -> Quote (') when tapped.
          :rules [[:##caps_lock :left_control nil {:alone :escape}]
                  [:##quote :right_control nil {:alone :quote}]]}
 
-        {:des "Hyper Key"
-         ; This modification adds an easy way to trigger all modifiers
-         ; i.e. the _Hyper_ key by pressing the Left Control key.
+        {:des "Hyper key"
+         ; Physical Left Control -> Hyper key (Control + Option + Command + Shift).
          :rules [[:left_control :!C!O!Sleft_control]]}
 
-        {:des "Left Command Layer - 1-5 Function Keys"
-         ; This layer is activated by holding Left Command and using the first
-         ; five number row keys. This layer provides better access to function 
-         ; keys.
-         ;
-         ; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
-         ; All other keys => post nothing to promote good typing habits.
-         :rules [[:!C##tab :vk_none]
-                 [:!C##1 :f1]
+        {:des "No-stretch function keys"
+         ; Left Command + 1/2/3/4/5 -> F1/F2/F3/F4/F5.
+         ; Right Command + 6/7/8/9/0/-/= -> F6/F7/F8/F9/F10/F11/F12.
+         :rules [[:!C##1 :f1]
                  [:!C##2 :f2]
                  [:!C##3 :f3]
                  [:!C##4 :f4]
                  [:!C##5 :f5]
-                 [:!C##q :vk_none]
-                 [:!C##w :vk_none]
-                 [:!C##e :vk_none]
-                 [:!C##r :vk_none]
-                 [:!C##t :vk_none]
-                 [:!C##a :vk_none]
-                 [:!C##s :vk_none]
-                 [:!C##d :vk_none]
-                 [:!C##f :vk_none]
-                 [:!C##g :vk_none]
-                 [:!C##grave_accent_and_tilde :vk_none]
-                 [:!C##z :vk_none]
-                 [:!C##x :vk_none]
-                 [:!C##c :vk_none]
-                 [:!C##v :vk_none]
-                 [:!C##b :vk_none]]}
-
-        {:des "Right Command Layer - 6-12 Function Keys & Arrow Keys",
-         ; This layer is activated by holding Right Command and using the first
-         ; rest of the number row keys. This layer provides better access to function
-         ; keys.
-         ;
-         ; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
-         ; Text navigation => H/J/K/L to Left/Down/Up/Right.
-         ; All other keys => post nothing to promote good typing habits.
-         :rules [[:!Q##6 :f6]
+                 [:!Q##6 :f6]
                  [:!Q##7 :f7]
                  [:!Q##8 :f8]
                  [:!Q##9 :f9]
                  [:!Q##0 :f10]
                  [:!Q##hyphen :f11]
-                 [:!Q##equal_sign :f12]
-                 [:!Q##y :vk_none]
-                 [:!Q##u :vk_none]
-                 [:!Q##i :vk_none]
-                 [:!Q##o :vk_none]
-                 [:!Q##p :vk_none]
-                 [:!Q##open_bracket :vk_none]
-                 [:!Q##close_bracket :vk_none]
-                 [:!Q##h :left_arrow]
-                 [:!Q##j :down_arrow]
-                 [:!Q##k :up_arrow]
-                 [:!Q##l :right_arrow]
-                 [:!Q##semicolon :vk_none]
-                 [:!Q##quote :vk_none]
-                 [:!Q##n :fn]
-                 [:!Q##m :vk_none]
-                 [:!Q##comma :vk_none]
-                 [:!Q##period :vk_none]
-                 [:!Q##slash :vk_none]
-                ]}
+                 [:!Q##equal_sign :f12]]}
 
-        {:des "Easy Forward Delete"
-         ; This modification makes it easy to do forward deletion by
-         ; turning the Delete key into Forward Delete when the Left Shift
-         ; is active.
-         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}]}
+        {:des "Simple forward delete"
+         ; Left Shift + Delete -> Forward delete.
+         ; NOTE: Other left modifiers are also allowed.
+         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}
+
+        {:des "Vim navigation mode"
+         ; A/S/D -> Command/Shift/Option keys.
+         ; H/J/K/L -> Left/Down/Up/Right arrows.
+         :rules [[:##a :left_command :vim-navigation-mode]
+                 [:##s :left_shift :vim-navigation-mode]
+                 [:##d :left_option :vim-navigation-mode]
+                 [:##h :left_arrow :vim-navigation-mode]
+                 [:##j :down_arrow :vim-navigation-mode]
+                 [:##k :up_arrow :vim-navigation-mode]
+                 [:##l :right_arrow :vim-navigation-mode]]}
+
+        {:des "Application launch mode"
+         :rules [[:b [:launch "browser"] :application-launch-mode]
+                 [:c [:launch "calendar"] :application-launch-mode]
+                 [:t [:launch "task manager"] :application-launch-mode]
+                 [:n [:launch "note-taking application"] :application-launch-mode]
+                 [:m [:launch "mail client"] :application-launch-mode]
+                 [:w [:launch "work messenger"] :application-launch-mode]
+                 [:p [:launch "personal messenger"] :application-launch-mode]
+                 [:i [:launch "IDE"] :application-launch-mode]
+                 [:e [:launch "terminal emulator"] :application-launch-mode]]}
+
+        {:des "Task manager mode"
+         :rules [[:i [:run-shortcut "Open task inbox"] :task-manager-mode]
+                 [:d [:run-shortcut "Open today's tasks"] :task-manager-mode]
+                 [:w [:run-shortcut "Find waiting tasks"] :task-manager-mode]
+                 [:u [:run-shortcut "Open upcoming tasks"] :task-manager-mode]
+                 [:a [:run-shortcut "Open anytime tasks"] :task-manager-mode]
+                 [:s [:run-shortcut "Open someday tasks"] :task-manager-mode]
+                 [:l [:run-shortcut "Open task logbook"] :task-manager-mode]]}
+
+        {:des "Notes application mode"
+         :rules [[:i [:run-shortcut "Open inbox notes"] :notes-application-mode]
+                 [:t [:run-shortcut "Open today's inbox"] :notes-application-mode]
+                 [:w [:run-shortcut "Open waiting notes"] :notes-application-mode]
+                 [:g [:run-shortcut "Open goal notes"] :notes-application-mode]
+                 [:a [:run-shortcut "Open area notes"] :notes-application-mode]
+                 [:p [:run-shortcut "Open project notes"] :notes-application-mode]]}]}
