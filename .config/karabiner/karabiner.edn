@@ -5,24 +5,26 @@
 ;;  - [Goku tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md)
 ;;  - [Goku key definitions](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/src/karabiner_configurator/keys_info.clj)
 
-{:templates {; This template runs the Apple Shortcuts command with the provided name via shell.
-             ; Reference: https://support.apple.com/guide/shortcuts-mac/run-shortcuts-from-the-command-line-apd455c82f02/mac
-             :run-shortcut "shortcuts run \"%s\""
-             ; This template launches or focuses application by invoking Apple Shortucts commands.
-             :launch "shortcuts run \"Launch %s\""}
-
- :simlayers {:application-launch-mode {:key :a}
-             :vim-navigation-mode {:key :v}
-             :task-manager-mode {:key :t}
-             :notes-application-mode {:key :n}}
-
- :main [{:des "Mirror control & easy escape"
+{:main [{:des "Mirror control & easy escape"
          ; Caps Lock -> Left Control when held down.
          ; Caps Lock -> turned into the Escape when tapped.
          ; Quote (') -> Right Control when held down.
          ; Quote (') -> Quote (') when tapped.
          :rules [[:##caps_lock :left_control nil {:alone :escape}]
                  [:##quote :right_control nil {:alone :quote}]]}
+
+        {:des "Function vim mode"
+         ; Fn+A/S/D -> Command/Shift/Option keys.
+         ; Fn+H/J/K/L -> Left/Down/Up/Right arrows.
+         :rules [[:fn ["fn-vim-mode" 1] nil {:afterup ["fn-vim-mode" 0]
+                                             :alone :fn}]
+                 [:##a :left_shift ["fn-vim-mode" 1]]
+                 [:##s :left_option ["fn-vim-mode" 1]]
+                 [:##d :left_command ["fn-vim-mode" 1]]
+                 [:##h :left_arrow ["fn-vim-mode" 1]]
+                 [:##j :down_arrow ["fn-vim-mode" 1]]
+                 [:##k :up_arrow ["fn-vim-mode" 1]]
+                 [:##l :right_arrow ["fn-vim-mode" 1]]]}
 
         {:des "Hyper key"
          ; Physical Left Control -> Hyper key (Control + Option + Command + Shift).
@@ -47,43 +49,4 @@
         {:des "Simple forward delete"
          ; Left Shift + Delete -> Forward delete.
          ; NOTE: Other left modifiers are also allowed.
-         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}
-
-        {:des "Vim navigation mode"
-         ; A/S/D -> Command/Shift/Option keys.
-         ; H/J/K/L -> Left/Down/Up/Right arrows.
-         :rules [[:##a :left_command :vim-navigation-mode]
-                 [:##s :left_shift :vim-navigation-mode]
-                 [:##d :left_option :vim-navigation-mode]
-                 [:##h :left_arrow :vim-navigation-mode]
-                 [:##j :down_arrow :vim-navigation-mode]
-                 [:##k :up_arrow :vim-navigation-mode]
-                 [:##l :right_arrow :vim-navigation-mode]]}
-
-        {:des "Application launch mode"
-         :rules [[:b [:launch "browser"] :application-launch-mode]
-                 [:c [:launch "calendar"] :application-launch-mode]
-                 [:t [:launch "task manager"] :application-launch-mode]
-                 [:n [:launch "note-taking application"] :application-launch-mode]
-                 [:m [:launch "mail client"] :application-launch-mode]
-                 [:w [:launch "work messenger"] :application-launch-mode]
-                 [:p [:launch "personal messenger"] :application-launch-mode]
-                 [:i [:launch "IDE"] :application-launch-mode]
-                 [:e [:launch "terminal emulator"] :application-launch-mode]]}
-
-        {:des "Task manager mode"
-         :rules [[:i [:run-shortcut "Open task inbox"] :task-manager-mode]
-                 [:d [:run-shortcut "Open today's tasks"] :task-manager-mode]
-                 [:w [:run-shortcut "Find waiting tasks"] :task-manager-mode]
-                 [:u [:run-shortcut "Open upcoming tasks"] :task-manager-mode]
-                 [:a [:run-shortcut "Open anytime tasks"] :task-manager-mode]
-                 [:s [:run-shortcut "Open someday tasks"] :task-manager-mode]
-                 [:l [:run-shortcut "Open task logbook"] :task-manager-mode]]}
-
-        {:des "Notes application mode"
-         :rules [[:i [:run-shortcut "Open inbox notes"] :notes-application-mode]
-                 [:t [:run-shortcut "Open today's inbox"] :notes-application-mode]
-                 [:w [:run-shortcut "Open waiting notes"] :notes-application-mode]
-                 [:g [:run-shortcut "Open goal notes"] :notes-application-mode]
-                 [:a [:run-shortcut "Open area notes"] :notes-application-mode]
-                 [:p [:run-shortcut "Open project notes"] :notes-application-mode]]}]}
+         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}]}
