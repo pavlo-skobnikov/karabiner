@@ -13,19 +13,6 @@
          :rules [[:##caps_lock :left_control nil {:alone :escape}]
                  [:##quote :right_control nil {:alone :quote}]]}
 
-        {:des "Function vim mode"
-         ; Fn+A/S/D -> Command/Shift/Option keys.
-         ; Fn+H/J/K/L -> Left/Down/Up/Right arrows.
-         :rules [[:fn ["fn-vim-mode" 1] nil {:afterup ["fn-vim-mode" 0]
-                                             :alone :fn}]
-                 [:##a :left_shift ["fn-vim-mode" 1]]
-                 [:##s :left_option ["fn-vim-mode" 1]]
-                 [:##d :left_command ["fn-vim-mode" 1]]
-                 [:##h :left_arrow ["fn-vim-mode" 1]]
-                 [:##j :down_arrow ["fn-vim-mode" 1]]
-                 [:##k :up_arrow ["fn-vim-mode" 1]]
-                 [:##l :right_arrow ["fn-vim-mode" 1]]]}
-
         {:des "Hyper key"
          ; Physical Left Control -> Hyper key (Control + Option + Command + Shift).
          :rules [[:left_control :!C!O!Sleft_control]]}
@@ -45,6 +32,13 @@
                  [:!Q##0 :f10]
                  [:!Q##hyphen :f11]
                  [:!Q##equal_sign :f12]]}
+
+        {:des "Right command vim mode"
+         ; Right Command+H/J/K/L -> Left/Down/Up/Right arrows.
+         :rules [[:!Q##h :left_arrow]
+                 [:!Q##j :down_arrow]
+                 [:!Q##k :up_arrow]
+                 [:!Q##l :right_arrow]]}
 
         {:des "Simple forward delete"
          ; Left Shift + Delete -> Forward delete.
