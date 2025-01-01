@@ -11,7 +11,8 @@
 ;;  - [Goku tutorial](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md)
 ;;  - [Goku key definitions](https://github.com/yqrashawn/GokuRakuJoudo/blob/master/src/karabiner_configurator/keys_info.clj)
 
-{:main [{:des "Mirror controls & caps lock to escape"
+{:global {:show-in-menu-bar false}
+ :main [{:des "Mirror controls & caps lock to escape"
          ; Caps Lock -> Left Control when held down.
          ; Caps Lock -> turned into the Escape when tapped.
          ; Quote (') -> Right Control when held down.
