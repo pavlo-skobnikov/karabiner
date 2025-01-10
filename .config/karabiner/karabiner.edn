@@ -46,19 +46,12 @@
                  [:!Qi :!QWERi]
                  [:!Qo :!QWERo]
                  [:!Qp :!QWERp]
-                 [:!Qopen_bracket :!QWERopen_bracket]
-                 [:!Qclose_bracket :!QWERclose_bracket]
                  [:!Q##h :left_arrow]
                  [:!Q##j :down_arrow]
                  [:!Q##k :up_arrow]
                  [:!Q##l :right_arrow]
-                 [:!Qsemicolon :!QWERsemicolon]
-                 [:!Qbackslash :!QWERbackslash]
                  [:!Qn :!QWERn]
-                 [:!Qm :!QWERm]
-                 [:!Qcomma :!QWERcomma]
-                 [:!Qperiod :!QWERperiod]
-                 [:!Qslash :!QWERslash]]}
+                 [:!Qm :!QWERm]]}
 
         {:des "Super keys"
          ; Left Command + left-hand side keys -> Super + [PRESSED_KEY]
@@ -84,19 +77,12 @@
                  [:!Ei :!QWEi]
                  [:!Eo :!QWEo]
                  [:!Ep :!QWEp]
-                 [:!Eopen_bracket :!QWEopen_bracket]
-                 [:!Eclose_bracket :!QWEclose_bracket]
                  [:!Eh :!QWEh]
                  [:!Ej :!QWEj]
                  [:!Ek :!QWEk]
                  [:!El :!QWEl]
-                 [:!Esemicolon :!QWEsemicolon]
-                 [:!Ebackslash :!QWEbackslash]
                  [:!En :!QWEn]
-                 [:!Em :!QWEm]
-                 [:!Ecomma :!QWEcomma]
-                 [:!Eperiod :!QWEperiod]
-                 [:!Eslash :!QWEslash]]}
+                 [:!Em :!QWEm]]}
 
         {:des "No-stretch function keys"
          ; Left Command + left-side number row keys -> F1 - F5.
