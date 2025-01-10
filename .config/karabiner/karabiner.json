@@ -45,18 +45,6 @@
         "description" : "Hyper keys & vim arrow keys mode",
         "manipulators" : [ {
           "from" : {
-            "key_code" : "tab",
-            "modifiers" : {
-              "mandatory" : [ "left_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "tab",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "q",
             "modifiers" : {
               "mandatory" : [ "left_command" ]
@@ -455,18 +443,6 @@
       }, {
         "description" : "Super keys",
         "manipulators" : [ {
-          "from" : {
-            "key_code" : "tab",
-            "modifiers" : {
-              "mandatory" : [ "left_option" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "tab",
-            "modifiers" : [ "left_command", "left_control", "left_option" ]
-          } ],
-          "type" : "basic"
-        }, {
           "from" : {
             "key_code" : "q",
             "modifiers" : {

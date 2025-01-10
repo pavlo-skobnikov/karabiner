@@ -26,8 +26,7 @@
          ; NOTE 1: Hyper == Command + Control + Option + Shift modifiers.
          ; NOTE 2: h/j/k/l are not mapped to Hyper + [PRESSED_KEY] but rather
          ; to vim arrow keys for convenience.
-         :rules [[:!Ctab :!CTOStab]
-                 [:!Cq :!CTOSq]
+         :rules [[:!Cq :!CTOSq]
                  [:!Cw :!CTOSw]
                  [:!Ce :!CTOSe]
                  [:!Cr :!CTOSr]
@@ -65,8 +64,7 @@
          ; Left Command + left-hand side keys -> Super + [PRESSED_KEY]
          ; Right Command + right-hand side keys -> Super + [PRESSED_KEY]
          ; NOTE: Super == Command + Control + Option + modifiers.
-         :rules [[:!Otab :!CTOtab]
-                 [:!Oq :!CTOq]
+         :rules [[:!Oq :!CTOq]
                  [:!Ow :!CTOw]
                  [:!Oe :!CTOe]
                  [:!Or :!CTOr]
